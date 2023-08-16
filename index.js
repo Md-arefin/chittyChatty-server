@@ -10,6 +10,10 @@ const io = new Server(httpServer, {
     },
 });
 
+app.use(cors({
+    origin: allowedOrigins,
+  }));
+
 io.use((socket, next) => {
     const username = socket.handshake.auth.username;
     if (!username) {
