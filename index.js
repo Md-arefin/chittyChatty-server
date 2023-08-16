@@ -5,7 +5,7 @@ import { v4 as uuIdv4 } from 'uuid';
 const httpServer = http.createServer();
 const io = new Server(httpServer, {
     cors: {
-        origin: "http://localhost:5173",
+        origin: "https://silly-platypus-65a10e.netlify.app/",
         methods: ["GET", "POST"],
     },
 });
