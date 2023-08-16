@@ -14,13 +14,7 @@ const io = new Server(httpServer, {
     },
 });
 
-const allowedOrigins = [
-    'https://silly-platypus-65a10e.netlify.app', // Replace with your Netlify app's domain
-  ];
-
-app.use(cors({
-    origin: allowedOrigins,
-  }));
+app.use(cors());
 
 io.use((socket, next) => {
     const username = socket.handshake.auth.username;
