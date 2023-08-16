@@ -21,7 +21,7 @@ io.use((socket, next) => {
     next();
 });
 
-io.on("connection", async (socket) => {
+io.on("connection",(socket) => {
     // socket events
 
     // all connected users
@@ -47,6 +47,19 @@ io.on("connection", async (socket) => {
         username: socket.username,
         userId: socket.userId
     });
+
+    // new message
+    socket.on("new message", (message) => {
+        const newMessage = {
+            username: socket.username,
+            userId: socket.userId,
+            message,
+        };
+    
+        socket.emit("new message", newMessage); // Emit to the sender
+        socket.broadcast.emit("new message", newMessage); // Broadcast to others
+    });
+    
 });
 
 console.log("ChittyChatty Listening to port @ 5000");
