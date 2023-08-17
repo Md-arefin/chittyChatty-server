@@ -2,11 +2,11 @@ import http from 'http';
 import { Server } from 'socket.io';
 import { v4 as uuIdv4 } from 'uuid';
 import express from 'express';
-import cors from 'cors';
+
 
 const app = express();
 
-const httpServer = http.createServer();
+const httpServer = http.createServer(app);
 const io = new Server(httpServer, {
     cors: true
     // {
