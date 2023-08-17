@@ -8,13 +8,16 @@ const app = express();
 
 const httpServer = http.createServer();
 const io = new Server(httpServer, {
-    cors: {
-        origin: "https://silly-platypus-65a10e.netlify.app/",
-        methods: ["GET", "POST"],
-    },
+    cors: true
+    // {
+    //     // origin: "https://silly-platypus-65a10e.netlify.app/",
+    //     origin: "http://localhost:5173",
+    //     methods: ["GET", "POST"],
+    // },
 });
 
-app.use(cors());
+// app.use(cors());
+// app.use(express.json());
 
 io.use((socket, next) => {
     const username = socket.handshake.auth.username;
